@@ -1,0 +1,22 @@
+[build]
+  command   = "npm run build"
+  publish   = "dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# ── SPA fallback ───────────────────────────────────────────────
+# All routes that don't match a static file are served index.html
+# so React Router handles them client-side.
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+# ── Dev server ─────────────────────────────────────────────────
+[dev]
+  command   = "npm run dev"
+  port      = 5173
+  targetPort = 5173
+  functions = "netlify/functions"

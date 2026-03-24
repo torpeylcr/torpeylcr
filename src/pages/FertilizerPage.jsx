@@ -45,13 +45,6 @@ export function FertilizerPage() {
         subtitle={activeCrop ? `Crop: ${activeCrop.displayName}` : 'No crop selected'}
       />
 
-      {!import.meta.env.VITE_ANTHROPIC_API_KEY && (
-        <WarningBanner level="warning">
-          <strong>API key not configured.</strong> Add <code>VITE_ANTHROPIC_API_KEY</code> to your{' '}
-          <code>.env</code> file to enable AI recommendations.
-        </WarningBanner>
-      )}
-
       {!activeCrop && (
         <WarningBanner level="info">
           No crop selected. Go to <strong>My Crops</strong> to set your crop for tailored recommendations.

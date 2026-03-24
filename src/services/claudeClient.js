@@ -1,16 +1,9 @@
-import Anthropic from '@anthropic-ai/sdk'
+// This file is intentionally minimal.
+// All Anthropic API calls go through Netlify serverless functions
+// (netlify/functions/identify.js and netlify/functions/fertilizer.js)
+// so the API key NEVER appears in the browser bundle.
+//
+// See plantIdentService.js and fertRecommendService.js for the actual calls.
 
-const client = new Anthropic({
-  apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY,
-  dangerouslyAllowBrowser: true,
-})
-
-export async function callClaude(messages, systemPrompt, maxTokens = 1500) {
-  const response = await client.messages.create({
-    model: 'claude-sonnet-4-6',
-    max_tokens: maxTokens,
-    system: systemPrompt,
-    messages,
-  })
-  return response.content[0].text
-}
+// Base URL for the serverless functions — same origin, no CORS issues
+export const FUNCTIONS_BASE = '/.netlify/functions'

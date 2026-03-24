@@ -35,13 +35,6 @@ export function WeedIdentPage() {
         subtitle={activeCrop ? `Crop: ${activeCrop.displayName}` : 'No crop selected'}
       />
 
-      {!import.meta.env.VITE_ANTHROPIC_API_KEY && (
-        <WarningBanner level="warning">
-          <strong>API key not configured.</strong> Add <code>VITE_ANTHROPIC_API_KEY</code> to your{' '}
-          <code>.env</code> file to enable AI identification.
-        </WarningBanner>
-      )}
-
       {!activeCrop && (
         <WarningBanner level="info">
           No crop selected. Go to <strong>My Crops</strong> to set your current crop for

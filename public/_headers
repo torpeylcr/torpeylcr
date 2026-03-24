@@ -1,0 +1,45 @@
+# Netlify security headers — applied to every response from this site.
+# These protect users without any server-side code required.
+
+/*
+  # ── Clickjacking protection ──────────────────────────────────
+  # Prevents this page being embedded inside an iframe on another site,
+  # which could be used to trick users into clicking hidden buttons.
+  X-Frame-Options: DENY
+
+  # ── MIME sniffing protection ─────────────────────────────────
+  # Forces browsers to respect the Content-Type header we send, preventing
+  # attacks that rely on the browser "guessing" a file's type.
+  X-Content-Type-Options: nosniff
+
+  # ── Referrer policy ──────────────────────────────────────────
+  # Only sends the full URL to same-origin pages. Other sites only get
+  # the origin (e.g. https://yourapp.netlify.app), not the full path.
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # ── Permissions policy ───────────────────────────────────────
+  # Explicitly states which browser features this app uses.
+  # camera=(self) — camera access allowed, but only by our own pages,
+  #   not by embedded iframes from third-party sites.
+  # geolocation=() — we do NOT use location data. If any injected code
+  #   tries to request it, the browser will block it.
+  # microphone=() — not used.
+  # payment=() — not used.
+  # usb=() — not used.
+  Permissions-Policy: camera=(self), microphone=(), geolocation=(), payment=(), usb=()
+
+  # ── Content Security Policy ───────────────────────────────────
+  # This is the main XSS defence. It tells the browser exactly what
+  # content is allowed to load, blocking anything unexpected.
+  #
+  # default-src 'self'   — by default, only load content from our domain
+  # script-src 'self' 'unsafe-inline'  — our own JS + Vite's inline bootstrap script
+  # style-src 'self' 'unsafe-inline'   — our own CSS + Tailwind's inline styles
+  # img-src 'self' data: blob:         — our images + base64 captures + camera blobs
+  # connect-src 'self'                 — XHR/fetch only to our own domain
+  #   (the Netlify functions are same-origin — no direct Anthropic calls from browser)
+  # media-src 'self' blob:             — camera video stream (blob: URL)
+  # worker-src 'self'                  — service worker for PWA offline support
+  # manifest-src 'self'                — PWA manifest file
+  # frame-ancestors 'none'             — equivalent to X-Frame-Options DENY
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; media-src 'self' blob:; worker-src 'self'; manifest-src 'self'; frame-ancestors 'none';
