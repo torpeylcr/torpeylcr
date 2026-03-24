@@ -1,0 +1,51 @@
+export const nzSuppliers = {
+  farmlands: {
+    id: 'farmlands',
+    name: 'Farmlands',
+    url: 'https://www.farmlands.co.nz',
+    phone: '0800 200 600',
+    color: '#1d6b2e',
+  },
+  fruitfed: {
+    id: 'fruitfed',
+    name: 'Fruitfed Supplies',
+    url: 'https://www.fruitfed.co.nz',
+    phone: '0800 436 787',
+    color: '#f97316',
+  },
+  horticenter: {
+    id: 'horticenter',
+    name: 'Horticentre',
+    url: 'https://www.horticentre.co.nz',
+    phone: '07 578 6505',
+    color: '#0ea5e9',
+  },
+  pggwrightson: {
+    id: 'pggwrightson',
+    name: 'PGG Wrightson',
+    url: 'https://www.pggwrightson.co.nz',
+    phone: '0800 10 22 76',
+    color: '#7c3aed',
+  },
+  ravensdown: {
+    id: 'ravensdown',
+    name: 'Ravensdown',
+    url: 'https://www.ravensdown.co.nz',
+    phone: '0800 100 123',
+    color: '#dc2626',
+  },
+  ballance: {
+    id: 'ballance',
+    name: 'Ballance Agri-Nutrients',
+    url: 'https://www.ballance.co.nz',
+    phone: '0800 222 090',
+    color: '#2563eb',
+  },
+  yara: {
+    id: 'yara',
+    name: 'Yara NZ',
+    url: 'https://www.yara.co.nz',
+    phone: '09 573 0850',
+    color: '#0284c7',
+  },
+}
